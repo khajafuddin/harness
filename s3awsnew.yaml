@@ -4,4 +4,4 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: buck1
+      BucketName: requesttttt12333
