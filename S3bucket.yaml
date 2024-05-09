@@ -1,0 +1,39 @@
+pipeline:
+  name: Demo-pipeline
+  identifier: Demopipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Custom stage
+        identifier: Custom_stage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: S3 bucket
+                  identifier: S3_bucket
+                  spec:
+                    provisionerIdentifier: abc
+                    configuration:
+                      stackName: s3stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - s3awsnew.yaml
+                              connectorRef: gitconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
