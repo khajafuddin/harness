@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_khajafuddin_harness_1715331243711-push-trigger-input-set
+  identifier: Build_khajafuddin_harness_1715331243711pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: kubeproject
+  pipeline:
+    identifier: Build_khajafuddin_harness_1715331243711
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
