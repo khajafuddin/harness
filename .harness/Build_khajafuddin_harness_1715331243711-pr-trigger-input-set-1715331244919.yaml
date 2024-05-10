@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_khajafuddin_harness_1715331243711-pr-trigger-input-set
+  identifier: Build_khajafuddin_harness_1715331243711prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: kubeproject
+  pipeline:
+    identifier: Build_khajafuddin_harness_1715331243711
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
