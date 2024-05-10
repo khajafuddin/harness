@@ -35,5 +35,9 @@ pipeline:
                               gitFetchType: Branch
                               branch: main
                       roleArn: ""
+                      parameterOverrides:
+                        - name: s3bucket
+                          value: <+input>
+                          type: String
                   timeout: 10m
         tags: {}
