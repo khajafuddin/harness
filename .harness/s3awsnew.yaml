@@ -1,0 +1,39 @@
+pipeline:
+  name: s3newpipe
+  identifier: s3newpipe
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: newcustomstage
+        identifier: newcustomstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: CreateStack_12
+                  identifier: CreateStack_12
+                  spec:
+                    provisionerIdentifier: custom
+                    configuration:
+                      stackName: s3stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-2
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - s3awsnew.yaml
+                              connectorRef: S3newrequest
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
