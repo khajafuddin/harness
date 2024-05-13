@@ -1,0 +1,39 @@
+pipeline:
+  name: kube-pipeline
+  identifier: kubepipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: new-custom
+        identifier: newcustom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: CreateStack_12
+                  identifier: CreateStack_12
+                  spec:
+                    provisionerIdentifier: custom
+                    configuration:
+                      stackName: s3stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Ec2.yaml
+                              connectorRef: gitconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
