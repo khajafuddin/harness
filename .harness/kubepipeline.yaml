@@ -20,7 +20,7 @@ pipeline:
                   spec:
                     provisionerIdentifier: custom
                     configuration:
-                      stackName: s3stack
+                      stackName: Ec2stack
                       connectorRef: AWSsecretconnector
                       region: us-east-1
                       templateFile:
