@@ -16,7 +16,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceTypeParameter
       ImageId: !Ref InstanceImageId
-      AvailabilityZone: us-east-1
+      AvailabilityZone: us-west-1a
       KeyName: !Ref InstanceKeyName
       Tags:
         - Key: User
