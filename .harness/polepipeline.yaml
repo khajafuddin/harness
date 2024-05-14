@@ -1,0 +1,39 @@
+pipeline:
+  name: pole-pipeline
+  identifier: polepipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: red-custom
+        identifier: redcustom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: CreateStack_12
+                  identifier: CreateStack_12
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: ham-stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Ec2.yaml
+                              connectorRef: gitconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
