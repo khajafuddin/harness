@@ -1,0 +1,39 @@
+pipeline:
+  name: ctl-pipeline
+  identifier: ctlpipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: poll-stage
+        identifier: pollstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: new-stack-vpc
+                  identifier: newstackvpc
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: new-stack-vpc
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - vpc.yaml
+                              connectorRef: gitconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
