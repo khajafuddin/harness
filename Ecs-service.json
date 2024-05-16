@@ -7,5 +7,6 @@
     "deploymentConfiguration": {
         "maximumPercent": 200,
         "minimumHealthyPercent": 100
-    }
+    },
+    "desiredCount": "1",
 }
