@@ -9,4 +9,18 @@
         "minimumHealthyPercent": 100
     },
     "desiredCount": "1",
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-020223ed44088a828",
+                "subnet-0c913f9e11724e72f",
+                "subnet-0e974dd2e30702920"
+            ],
+            "securityGroups": [
+                "sg-087118f4ffe0f9bd1"
+            ],
+            "assignPublicIp": "DISABLED"
+        }
+    }
 }
+
