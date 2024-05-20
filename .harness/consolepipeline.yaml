@@ -39,9 +39,6 @@ pipeline:
                         - name: AWSSecretName
                           value: <+input>
                           type: String
-                        - name: HarnessSecretName
-                          value: <+input>
-                          type: String
                   timeout: 10m
         tags: {}
   variables:
