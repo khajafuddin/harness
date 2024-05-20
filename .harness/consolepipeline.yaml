@@ -39,6 +39,9 @@ pipeline:
                         - name: AWSSecretName
                           value: <+input>
                           type: String
+                        - name: HarnessSecretName
+                          value: <+secrets.getValue(<+pipeline.variables.HarnessSecretName>)>
+                          type: String
                   timeout: 10m
         tags: {}
   variables:
