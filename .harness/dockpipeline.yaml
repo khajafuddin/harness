@@ -1,0 +1,39 @@
+pipeline:
+  name: dock-pipeline
+  identifier: dockpipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: tap-stage
+        identifier: tapstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: hame-stack
+                  identifier: hamestack
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: Tap-stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - S3bucket.yaml
+                              connectorRef: gitconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
