@@ -22,9 +22,6 @@ inputSet:
                           - name: AWSSecretName
                             type: String
                             value: AWS-Demo-secret
-                          - name: HarnessSecretName
-                            type: String
-                            value: Demo-Secret
     variables:
       - name: HarnessSecretName
         type: String
