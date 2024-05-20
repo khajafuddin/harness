@@ -44,3 +44,9 @@ pipeline:
                           type: String
                   timeout: 10m
         tags: {}
+  variables:
+    - name: HarnessSecretName
+      type: String
+      description: ""
+      required: false
+      value: <+input>
