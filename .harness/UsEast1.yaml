@@ -1,0 +1,26 @@
+inputSet:
+  name: Us-East1
+  identifier: UsEast1
+  orgIdentifier: default
+  projectIdentifier: mphasis
+  pipeline:
+    identifier: consolepipeline
+    stages:
+      - stage:
+          identifier: constage
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: secstack1
+                    type: CreateStack
+                    spec:
+                      configuration:
+                        parameterOverrides:
+                          - name: AWSSecretName
+                            type: String
+                            value: AWS-Demo-secret
+                          - name: HarnessSecretName
+                            type: String
+                            value: HarnessSecretName
