@@ -40,7 +40,7 @@ pipeline:
                           value: <+input>
                           type: String
                         - name: HarnessSecretName
-                          value: <+input>
+                          value: <+secrets.getValue(<+pipeline.variables.HarnessSecretName>)>
                           type: String
                   timeout: 10m
         tags: {}
