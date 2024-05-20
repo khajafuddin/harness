@@ -1,0 +1,39 @@
+pipeline:
+  name: console-pipeline
+  identifier: consolepipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: con-stage
+        identifier: constage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: sec-stack1
+                  identifier: secstack1
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: Tap-stack
+                      connectorRef: AWSsecretconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Secret.yaml
+                              connectorRef: Secconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
