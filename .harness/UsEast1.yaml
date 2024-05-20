@@ -1,5 +1,6 @@
 inputSet:
   name: Us-East1
+  tags: {}
   identifier: UsEast1
   orgIdentifier: default
   projectIdentifier: mphasis
@@ -23,4 +24,4 @@ inputSet:
                             value: AWS-Demo-secret
                           - name: HarnessSecretName
                             type: String
-                            value: HarnessSecretName
+                            value: Demo-Secret
