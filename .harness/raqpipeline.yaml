@@ -101,3 +101,35 @@ pipeline:
                       roleArn: ""
                   timeout: 10m
         tags: {}
+    - stage:
+        name: zap-stage
+        identifier: zapstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: Zap-stack
+                  identifier: Zapstack
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: Zap-stack
+                      connectorRef: org.ecsconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Ec2.yaml
+                              connectorRef: Pomconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
