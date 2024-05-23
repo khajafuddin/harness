@@ -6,7 +6,7 @@ Parameters:
     Default: t2.micro
   InstanceImageId:
     Type: String
-    Default: ami-07caf09b362be10b8
+    Default: ami-0bb84b8ffd87024d8
   InstanceKeyName:
     Type: AWS::EC2::KeyPair::KeyName
     Default: microkube
@@ -21,4 +21,4 @@ Resources:
       Tags:
         - Key: User
           Value: khaja.uddin
-      SubnetId: subnet-0f165efa0c8be285a  
+      SubnetId: subnet-020223ed44088a828 
