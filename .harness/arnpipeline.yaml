@@ -1,0 +1,39 @@
+pipeline:
+  name: arn-pipeline
+  identifier: arnpipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: pat-stage
+        identifier: patstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: pat-stack
+                  identifier: patstack
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: Lom-satck
+                      connectorRef: org.ecsconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Ec2.yaml
+                              connectorRef: Pomconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
