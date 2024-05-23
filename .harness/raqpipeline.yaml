@@ -38,38 +38,6 @@ pipeline:
                   timeout: 10m
         tags: {}
     - stage:
-        name: yap-stage
-        identifier: yapstage
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: CreateStack
-                  name: yap-stack
-                  identifier: yapstack
-                  spec:
-                    provisionerIdentifier: AWS
-                    configuration:
-                      stackName: yap-stack
-                      connectorRef: org.ecsconnector
-                      region: us-east-1
-                      templateFile:
-                        type: Remote
-                        spec:
-                          store:
-                            type: Github
-                            spec:
-                              paths:
-                                - Ec2.yaml
-                              connectorRef: Pomconnector
-                              gitFetchType: Branch
-                              branch: main
-                      roleArn: ""
-                  timeout: 10m
-        tags: {}
-    - stage:
         name: zap-stage
         identifier: zapstage
         description: ""
