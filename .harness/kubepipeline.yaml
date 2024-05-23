@@ -15,13 +15,13 @@ pipeline:
             steps:
               - step:
                   type: CreateStack
-                  name: CreateStack_12
+                  name: Pom-stack
                   identifier: CreateStack_12
                   spec:
                     provisionerIdentifier: custom
                     configuration:
                       stackName: Ec2stack
-                      connectorRef: AWSsecretconnector
+                      connectorRef: org.ecsconnector
                       region: us-east-1
                       templateFile:
                         type: Remote
