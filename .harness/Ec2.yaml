@@ -1,0 +1,39 @@
+pipeline:
+  name: lom-pipeline
+  identifier: lompipeline
+  projectIdentifier: mphasis
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: tops-stage
+        identifier: topsstage
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: CreateStack
+                  name: pot-stack
+                  identifier: potstack
+                  spec:
+                    provisionerIdentifier: AWS
+                    configuration:
+                      stackName: Lom-satck
+                      connectorRef: org.ecsconnector
+                      region: us-east-1
+                      templateFile:
+                        type: Remote
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              paths:
+                                - Ec2.yaml
+                              connectorRef: Pomconnector
+                              gitFetchType: Branch
+                              branch: main
+                      roleArn: ""
+                  timeout: 10m
+        tags: {}
