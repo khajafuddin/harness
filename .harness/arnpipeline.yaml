@@ -20,7 +20,7 @@ pipeline:
                   spec:
                     provisionerIdentifier: AWS
                     configuration:
-                      stackName: Lom-satck
+                      stackName: pat-stack
                       connectorRef: org.ecsconnector
                       region: us-east-1
                       templateFile:
